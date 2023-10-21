@@ -1,0 +1,13 @@
+{
+    "name": "@blueprint/tailwind",
+    "version": "1.0.0",
+    "devDependencies": {
+        "tailwindcss": "^3.3.3"
+    },
+    "dependencies": {
+        "tailwindcss-animate": "^1.0.7"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

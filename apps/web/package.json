@@ -1,0 +1,39 @@
+{
+    "name": "website",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@trpc/client": "^10.40.0",
+        "@trpc/next": "^10.40.0",
+        "@trpc/react-query": "^10.40.0",
+        "@trpc/server": "^10.40.0",
+        "class-variance-authority": "^0.7.0",
+        "clsx": "^2.0.0",
+        "lucide-react": "^0.287.0",
+        "next": "13.5.4",
+        "next-auth": "^4.23.2",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "sonner": "^1.0.3",
+        "stripe": "^14.1.0",
+        "superjson": "^2.0.0",
+        "tailwind-merge": "^1.14.0"
+    },
+    "devDependencies": {
+        "@blueprint/ui": "workspace:*",
+        "@types/node": "20.8.0",
+        "@types/react": "18.2.24",
+        "@types/react-dom": "18.2.8",
+        "autoprefixer": "10.4.16",
+        "postcss": "8.4.31",
+        "tailwindcss": "3.3.2",
+        "tailwindcss-animate": "^1.0.7",
+        "typescript": "5.2.2"
+    }
+}
