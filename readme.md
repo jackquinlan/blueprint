@@ -1,1 +1,4 @@
-# maxpayload platform codebase
+# Blueprint 
+
+- A modern Nextjs starter kit
+

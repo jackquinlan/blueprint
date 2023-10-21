@@ -26,6 +26,7 @@
         "tailwind-merge": "^1.14.0"
     },
     "devDependencies": {
+        "@blueprint/db": "workspace:*",
         "@blueprint/ui": "workspace:*",
         "@types/node": "20.8.0",
         "@types/react": "18.2.24",
