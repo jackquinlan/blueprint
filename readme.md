@@ -1,4 +1,3 @@
-# Blueprint 
+# Blueprint
 
-- A modern Nextjs starter kit
-
+-   A modern Nextjs starter kit

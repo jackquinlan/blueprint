@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import { Slot } from "@radix-ui/react-slot";
 
 import { cn } from "../../lib/utils";
@@ -37,17 +38,14 @@ function getButtonClasses(
     return cn(classes["base"], classes["size"][size], classes["variant"][variant], ...rest);
 }
 
-export type ButtonProps = ButtonThemeProps & React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean };
+export type ButtonProps = ButtonThemeProps &
+    React.ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: boolean };
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className = "", variant, size, asChild = false, ...props }, ref) => {
         const Comp = asChild ? Slot : "button";
         return (
-            <Comp
-                className={getButtonClasses({ size, variant }, className)}
-                ref={ref}
-                {...props}
-            />
+            <Comp className={getButtonClasses({ size, variant }, className)} ref={ref} {...props} />
         );
     },
 );

@@ -8,7 +8,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Example {
+model Post {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")

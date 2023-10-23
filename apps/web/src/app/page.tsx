@@ -1,14 +1,16 @@
 import React from "react";
 
-import { db } from "@blueprint/db";
-import { Loader } from "@/components/loading-animation";
+import { api } from "@/trpc/server";
 
 export default async function Home() {
-    const examples = await db.example.findMany();
+    const posts = await api.post.getPosts.query();
     return (
         <div className="mt-4 w-full text-center">
-            <Loader />
-            {examples.map((example) => <p key={example.id}>{example.text}</p>)}
+            {posts.map((post) => (
+                <div key={post.id}>
+                    <p>{post.text}</p>
+                </div>
+            ))}
         </div>
     );
 }

@@ -1,0 +1,20 @@
+{
+    "name": "@blueprint/api",
+    "version": "1.0.0",
+    "main": "index.ts",
+    "types": "index.ts",
+    "dependencies": {
+        "@blueprint/db": "workspace:*",
+        "@trpc/client": "^10.40.0",
+        "@trpc/server": "^10.40.0",
+        "next": "13.5.4",
+        "next-auth": "^4.23.2",
+        "stripe": "^14.1.0",
+        "superjson": "^2.0.0",
+        "zod": "^3.22.4"
+    },
+    "devDependencies": {
+        "@blueprint/tsconfig": "workspace:*",
+        "typescript": "5.2.2"
+    }
+}
