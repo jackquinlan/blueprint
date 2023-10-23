@@ -34,6 +34,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@tanstack/react-query':
+        specifier: ^4.32.6
+        version: 4.36.1(react-dom@18.2.0)(react@18.2.0)
       '@trpc/client':
         specifier: ^10.40.0
         version: 10.40.0(@trpc/server@10.40.0)
@@ -80,6 +83,9 @@ importers:
         specifier: ^1.14.0
         version: 1.14.0
     devDependencies:
+      '@blueprint/api':
+        specifier: workspace:*
+        version: link:../../packages/api
       '@blueprint/db':
         specifier: workspace:*
         version: link:../../packages/db
@@ -107,6 +113,40 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.3.2)
+      typescript:
+        specifier: 5.2.2
+        version: 5.2.2
+
+  packages/api:
+    dependencies:
+      '@blueprint/db':
+        specifier: workspace:*
+        version: link:../db
+      '@trpc/client':
+        specifier: ^10.40.0
+        version: 10.40.0(@trpc/server@10.40.0)
+      '@trpc/server':
+        specifier: ^10.40.0
+        version: 10.40.0
+      next:
+        specifier: 13.5.4
+        version: 13.5.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
+      next-auth:
+        specifier: ^4.23.2
+        version: 4.23.2(next@13.5.4)(react-dom@18.2.0)(react@18.2.0)
+      stripe:
+        specifier: ^14.1.0
+        version: 14.1.0
+      superjson:
+        specifier: ^2.0.0
+        version: 2.0.0
+      zod:
+        specifier: ^3.22.4
+        version: 3.22.4
+    devDependencies:
+      '@blueprint/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -3650,6 +3690,10 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  /zod@3.22.4:
+    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+    dev: false
 
 settings:
   autoInstallPeers: true
