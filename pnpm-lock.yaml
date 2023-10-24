@@ -34,6 +34,18 @@ importers:
 
   apps/web:
     dependencies:
+      '@blueprint/api':
+        specifier: workspace:*
+        version: link:../../packages/api
+      '@blueprint/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
+      '@blueprint/db':
+        specifier: workspace:*
+        version: link:../../packages/db
+      '@blueprint/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@tanstack/react-query':
         specifier: ^4.32.6
         version: 4.36.1(react-dom@18.2.0)(react@18.2.0)
@@ -83,15 +95,6 @@ importers:
         specifier: ^1.14.0
         version: 1.14.0
     devDependencies:
-      '@blueprint/api':
-        specifier: workspace:*
-        version: link:../../packages/api
-      '@blueprint/db':
-        specifier: workspace:*
-        version: link:../../packages/db
-      '@blueprint/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
       '@types/node':
         specifier: 20.8.0
         version: 20.8.0
@@ -119,6 +122,9 @@ importers:
 
   packages/api:
     dependencies:
+      '@blueprint/auth':
+        specifier: workspace:*
+        version: link:../auth
       '@blueprint/db':
         specifier: workspace:*
         version: link:../db
@@ -143,6 +149,22 @@ importers:
       zod:
         specifier: ^3.22.4
         version: 3.22.4
+    devDependencies:
+      '@blueprint/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      typescript:
+        specifier: 5.2.2
+        version: 5.2.2
+
+  packages/auth:
+    dependencies:
+      '@blueprint/db':
+        specifier: workspace:*
+        version: link:../db
+      next-auth:
+        specifier: ^4.23.2
+        version: 4.23.2(next@13.5.4)(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@blueprint/tsconfig':
         specifier: workspace:*

@@ -1,11 +1,15 @@
 import { NextRequest } from "next/server";
 
 import { initTRPC, TRPCError } from "@trpc/server";
+import { type Session } from "next-auth";
 import superjson from "superjson";
 
+import { getServerAuthSession } from "@blueprint/auth";
 import { db } from "@blueprint/db";
 
-type CreateContextOptions = {};
+type CreateContextOptions = {
+    session: Session | null;
+};
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use
@@ -19,6 +23,7 @@ type CreateContextOptions = {};
  */
 export const createInnerTRPCContext = (opts: CreateContextOptions) => {
     return {
+        session: opts.session,
         db,
     };
 };
@@ -29,7 +34,11 @@ export const createInnerTRPCContext = (opts: CreateContextOptions) => {
  * @link https://trpc.io/docs/context
  */
 export const createTRPCContext = async (opts: { req: NextRequest }) => {
-    return createInnerTRPCContext({});
+    // get session info on the server
+    const session = await getServerAuthSession();
+    return createInnerTRPCContext({
+        session,
+    });
 };
 
 export const t = initTRPC.context<typeof createTRPCContext>().create({
@@ -54,3 +63,30 @@ export const mergeRouters = t.mergeRouters;
  * can still access user session data if they are logged in
  */
 export const publicProcedure = t.procedure;
+
+/**
+ * Reusable middleware that enforces users are logged in before running the
+ * procedure
+ */
+const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
+    if (!ctx.session?.user) {
+        throw new TRPCError({ code: "UNAUTHORIZED" });
+    }
+    return next({
+        ctx: {
+            // infers the `session` as non-nullable
+            session: { ...ctx.session, user: ctx.session.user },
+        },
+    });
+});
+
+/**
+ * Protected (authed) procedure
+ *
+ * If you want a query or mutation to ONLY be accessible to logged in users, use
+ * this. It verifies the session is valid and guarantees ctx.session.user is not
+ * null
+ *
+ * @see https://trpc.io/docs/procedures
+ */
+export const protectedProcedure = t.procedure.use(enforceUserIsAuthed);
