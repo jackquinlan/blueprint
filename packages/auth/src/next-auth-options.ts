@@ -2,6 +2,7 @@ import type { NextAuthOptions, Session } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 
 import { db } from "@blueprint/db";
+
 import CustomAdapter from "./next-auth-adapter";
 
 const authOptions: NextAuthOptions = {
