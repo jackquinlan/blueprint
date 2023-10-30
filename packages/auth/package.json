@@ -1,0 +1,13 @@
+{
+    "name": "@blueprint/auth",
+    "version": "1.0.0",
+    "main": "src/index.ts",
+    "dependencies": {
+        "@blueprint/db": "workspace:*",
+        "next-auth": "^4.23.2"
+    },
+    "devDependencies": {
+        "@blueprint/tsconfig": "workspace:*",
+        "typescript": "5.2.2"
+    }
+}
