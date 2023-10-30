@@ -1,6 +1,6 @@
 import { withAuth } from "next-auth/middleware";
 
-export default withAuth(async function middleware(req) {}, {
+export default withAuth({
     callbacks: {
         async authorized() {
             return true;

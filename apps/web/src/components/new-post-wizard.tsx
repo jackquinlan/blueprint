@@ -7,7 +7,7 @@ import { signOut } from "next-auth/react";
 
 import { Button, Card, CardHeader } from "@blueprint/ui";
 
-import { LoginButton } from "@/components/login-button";
+import { LoginButton } from "@/app/_components/login-button";
 
 export function NewPostWizard({ session }: { session?: Session }) {
     return (
@@ -16,7 +16,11 @@ export function NewPostWizard({ session }: { session?: Session }) {
                 {!session ? (
                     <LoginButton />
                 ) : (
-                    <Button className="rounded-full" size="sm" onClick={() => signOut({ callbackUrl: "/" })}>
+                    <Button
+                        className="rounded-full"
+                        size="sm"
+                        onClick={() => signOut({ callbackUrl: "/" })}
+                    >
                         Logout
                     </Button>
                 )}
