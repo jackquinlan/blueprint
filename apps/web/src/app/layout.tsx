@@ -22,7 +22,7 @@ export default function RootLayout({ children }: Props) {
     return (
         <html lang="en">
             <head />
-            <body className={cn(GeistSans.className, GeistSans.variable)}>
+            <body className={cn(int.variable, GeistSans.className, GeistSans.variable)}>
                 <Providers>
                     <div className="flex min-h-screen flex-col">
                         <Nav />
