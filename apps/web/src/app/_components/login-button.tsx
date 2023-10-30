@@ -18,14 +18,14 @@ export function LoginButton({}: Props) {
     return (
         <Button
             disabled={loading}
-            size="sm"
+            size="xs"
             onClick={() => {
                 setLoading(true);
                 signIn("github", { callbackUrl: callbackUrl, redirect: false });
             }}
-            className="rounded-full"
+            variant="outline"
         >
-            {loading ? <Loader /> : "Login with Github"}
+            {loading ? <Loader /> : "Log In"}
         </Button>
     );
 }
