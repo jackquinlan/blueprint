@@ -25,7 +25,7 @@ export function UserInfoDropdown({ user }: Props) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger className="outline-none">
-                <Avatar className="w-7 h-7">
+                <Avatar className="h-7 w-7">
                     <AvatarImage src={user.image ?? undefined} alt="user" />
                 </Avatar>
             </DropdownMenuTrigger>
@@ -38,20 +38,30 @@ export function UserInfoDropdown({ user }: Props) {
                 </div>
                 <Separator />
                 <DropdownMenuItem>
-                    <Link className="flex items-center justify-between w-full gap-2" href="/settings">
+                    <Link
+                        className="flex w-full items-center justify-between gap-2"
+                        href="/settings"
+                    >
                         <span>Settings</span>
-                        <GearIcon className="w-4 h-4" />
+                        <GearIcon className="h-4 w-4" />
                     </Link>
                 </DropdownMenuItem>
                 <Separator />
                 <div className="py-1">
                     <DropdownMenuItem className="px-2">
-                        <Link className="flex items-center justify-between w-full gap-2" target="_blank" href="/">
+                        <Link
+                            className="flex w-full items-center justify-between gap-2"
+                            target="_blank"
+                            href="/"
+                        >
                             <span>Blueprint Homepage</span>
-                            <ExternalLinkIcon className="w-4 h-4" />
+                            <ExternalLinkIcon className="h-4 w-4" />
                         </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="px-2" onClick={() => signOut({ callbackUrl: "/" })}>
+                    <DropdownMenuItem
+                        className="px-2"
+                        onClick={() => signOut({ callbackUrl: "/" })}
+                    >
                         Log Out
                     </DropdownMenuItem>
                 </div>

@@ -23,7 +23,7 @@
     "workspaces": [
         "apps/*",
         "packages/*",
-        "packages/config/*"
+        "tooling/*"
     ],
     "packageManager": "pnpm@8.6.10"
 }

@@ -10,7 +10,7 @@ const ToggleGroup = ToggleGroupPrimitive.Root;
 
 const Toggle = React.forwardRef<
     React.ElementRef<typeof ToggleGroupPrimitive.Root>,
-    React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root> 
+    React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root>
 >(({ className, ...props }, ref) => (
     <ToggleGroupPrimitive.Root
         ref={ref}
@@ -27,7 +27,7 @@ const ToggleGroupItem = React.forwardRef<
     <ToggleGroupPrimitive.Item
         ref={ref}
         className={cn(
-            "inline-flex items-center justify-center rounded-lg p-2 data-[state=on]:bg-muted data-[state=on]:text-muted-foreground",
+            "data-[state=on]:bg-muted data-[state=on]:text-muted-foreground inline-flex items-center justify-center rounded-lg p-2",
             className,
         )}
         {...props}
