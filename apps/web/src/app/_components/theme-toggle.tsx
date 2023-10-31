@@ -2,13 +2,10 @@
 
 import React from "react";
 
-import { MoonIcon, SunIcon, DesktopIcon } from "@radix-ui/react-icons";
+import { DesktopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 
-import {
-    ToggleGroup, 
-    ToggleGroupItem,
-} from "@blueprint/ui";
+import { ToggleGroup, ToggleGroupItem } from "@blueprint/ui";
 
 export function ThemeToggle() {
     const { setTheme } = useTheme();

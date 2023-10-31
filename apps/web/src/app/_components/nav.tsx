@@ -13,10 +13,7 @@ export function Nav() {
 
     return (
         <nav className="container flex items-center justify-between py-4">
-            <div className="flex items-center gap-1">
-                <Shapes className="h-5 w-5" />
-                <h1 className="font-extrabold">Blueprint</h1>
-            </div>
+            <Shapes className="h-5 w-5" />
             {session ? <UserInfoDropdown user={session.user} /> : <LoginButton />}
         </nav>
     );
