@@ -12,7 +12,7 @@ const loaderVariants = cva("animate-pulse rounded-full direction-alternate durat
         },
         size: {
             sm: "h-1 w-1",
-            lg: "h-1.5 w-1.5",
+            lg: "h-[1.5rem] w-[1.5rem]",
         },
     },
     defaultVariants: {

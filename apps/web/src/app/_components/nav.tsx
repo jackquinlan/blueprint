@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 
 import { Shapes } from "lucide-react";
 import { useSession } from "next-auth/react";
@@ -14,7 +14,9 @@ export function Nav() {
     return (
         <nav className="container flex items-center justify-between py-4">
             <Shapes className="h-5 w-5" />
-            {session ? <UserInfoDropdown user={session.user} /> : <LoginButton />}
+            <Suspense>
+                {session ? <UserInfoDropdown user={session.user} /> : <LoginButton />}
+            </Suspense>
         </nav>
     );
 }
