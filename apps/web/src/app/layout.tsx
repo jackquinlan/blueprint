@@ -24,7 +24,7 @@ export default function RootLayout({ children }: Props) {
             <head />
             <body className={cn(int.variable, GeistSans.className, GeistSans.variable)}>
                 <Providers>
-                    <div className="flex min-h-screen flex-col">
+                    <div className="flex flex-col min-h-screen">
                         <Nav />
                         <main className="flex-1">{children}</main>
                         <Footer />
