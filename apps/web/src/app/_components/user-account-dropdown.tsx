@@ -21,7 +21,7 @@ interface Props {
     user: User;
 }
 
-export function UserInfoDropdown({ user }: Props) {
+export function UserAccountDropdown({ user }: Props) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger className="outline-none">
@@ -51,8 +51,8 @@ export function UserInfoDropdown({ user }: Props) {
                     <DropdownMenuItem className="px-2">
                         <Link
                             className="flex w-full items-center justify-between gap-2"
-                            target="_blank"
                             href="/"
+                            target="_blank"
                         >
                             <span>Blueprint Homepage</span>
                             <ExternalLinkIcon className="h-4 w-4" />

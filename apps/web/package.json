@@ -31,7 +31,8 @@
         "sonner": "^1.0.3",
         "stripe": "^14.1.0",
         "superjson": "^2.0.0",
-        "tailwind-merge": "^1.14.0"
+        "tailwind-merge": "^1.14.0",
+        "zod": "^3.22.4"
     },
     "devDependencies": {
         "@types/node": "20.8.0",
