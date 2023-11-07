@@ -13,8 +13,9 @@
         "@blueprint/auth": "workspace:*",
         "@blueprint/db": "workspace:*",
         "@blueprint/ui": "workspace:*",
+        "@blueprint/config": "workspace:*",
         "@radix-ui/react-icons": "^1.3.0",
-        "@tanstack/react-query": "^4.32.6",
+        "@tanstack/react-query": "^4.36.1",
         "@trpc/client": "^10.40.0",
         "@trpc/next": "^10.40.0",
         "@trpc/react-query": "^10.40.0",
@@ -31,7 +32,8 @@
         "sonner": "^1.0.3",
         "stripe": "^14.1.0",
         "superjson": "^2.0.0",
-        "tailwind-merge": "^1.14.0"
+        "tailwind-merge": "^1.14.0",
+        "zod": "^3.22.4"
     },
     "devDependencies": {
         "@types/node": "20.8.0",

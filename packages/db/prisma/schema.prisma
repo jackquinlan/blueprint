@@ -48,6 +48,11 @@ model VerificationToken {
   @@map(name: "verification_tokens")
 }
 
+enum Plan {
+  free
+  premium
+}
+
 model User {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now()) @map(name: "created_at")
@@ -57,6 +62,12 @@ model User {
   emailVerified DateTime?
   name          String?
   image         String?
+
+  plan                   Plan      @default(free)
+  stripeCustomerId       String?   @unique @map(name: "stripe_customer_id")
+  stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
+  stripePriceId          String?   @map(name: "stripe_price_id")
+  stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
 
   accounts Account[]
   sessions Session[]

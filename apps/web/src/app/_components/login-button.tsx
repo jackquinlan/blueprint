@@ -25,7 +25,7 @@ export function LoginButton({}: Props) {
             }}
             variant="outline"
         >
-            {loading ? <Loader /> : "Log In"}
+            {loading ? <Loader /> : "Log In With Github"}
         </Button>
     );
 }

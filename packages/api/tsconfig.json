@@ -6,5 +6,5 @@
             "@/*": ["src/*"]
         },
     },
-    "include": ["src", "*.ts", "../../apps/website/src/types/next-auth.d.ts"]
+    "include": ["src", "*.ts", "../../packages/auth/src/next-auth.d.ts"]
 }
