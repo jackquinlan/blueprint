@@ -32,8 +32,8 @@ export function UserAccountDropdown({ user }: Props) {
             <DropdownMenuContent className="w-48 px-0 py-1" align="end">
                 <div className="flex items-center gap-2 p-2">
                     <div className="flex flex-col text-left text-xs">
-                        <h1 className="font-medium">{user.email}</h1>
-                        <h2>@{user.name}</h2>
+                        <h2 className="text-[14px] font-medium">@{user.name}</h2>
+                        <h1>{user.email}</h1>
                     </div>
                 </div>
                 <Separator />

@@ -69,15 +69,14 @@ export function ProfileSettings({ user }: Props) {
                                 </FormControl>
                                 <FormMessage />
                                 <FormDescription>
-                                    This is the name that will be displayed on your profile. Must be
-                                    between 3 and 32 characters.
+                                    This is the name that will be displayed on your profile.
                                 </FormDescription>
                             </FormItem>
                         )}
                     />
-                    <div>
-                        <Button size="sm" type="submit" disabled={isLoading}>
-                            {isLoading ? <Loader size="sm" /> : "Save"}
+                    <div className="border-t border-t-border pt-4">
+                        <Button size="xs" type="submit" disabled={isLoading}>
+                            {isLoading ? <Loader size="sm" /> : "Update"}
                         </Button>
                     </div>
                 </Shell>

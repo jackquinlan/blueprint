@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import { DesktopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
@@ -9,7 +9,6 @@ import { ToggleGroup, ToggleGroupItem } from "@blueprint/ui";
 
 export function ThemeToggle() {
     const { setTheme } = useTheme();
-
     return (
         <ToggleGroup type="single" defaultValue="light">
             <ToggleGroupItem value="light" onClick={() => setTheme("light")}>

@@ -10,14 +10,13 @@ import { UserAccountDropdown } from "@/app/_components/user-account-dropdown";
 
 export async function Nav() {
     const session = await getServerAuthSession();
-    console.log(session);
 
     return (
         <nav className="container flex items-center justify-between py-4">
             <Link href="/">
                 <Shapes className="h-6 w-6" />
             </Link>
-            <Suspense fallback="">
+            <Suspense>
                 {session ? <UserAccountDropdown user={session.user} /> : <LoginButton />}
             </Suspense>
         </nav>
