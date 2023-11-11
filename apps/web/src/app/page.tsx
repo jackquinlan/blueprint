@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Shell } from "@/components/shell";
-
 export default async function Home() {
     return (
-        <div className="container"></div>
+        <div className="container">
+            <h1 className="text-center text-4xl font-bold">Blueprint</h1>
+        </div>
     );
 }

@@ -11,7 +11,7 @@ export const FREE_PLAN: SubscriptionPlan = {
     description: "Get access to limited features for free.",
     stripePriceId: "",
     price: "Free",
-    features: ["3 posts", "A basic feature"],
+    features: ["5 tasks", "An example basic feature"],
 };
 
 export const PREMIUM_PLAN: SubscriptionPlan = {
@@ -19,5 +19,5 @@ export const PREMIUM_PLAN: SubscriptionPlan = {
     description: "Get access to more features.",
     stripePriceId: process.env.PREMIUM_PLAN_PRICE_ID || "",
     price: "$9.99/mo",
-    features: ["Unlimited posts", "An awesome premium feature"],
+    features: ["Unlimited tasks", "An awesome example premium feature"],
 };

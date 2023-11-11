@@ -74,7 +74,7 @@ export function ProfileSettings({ user }: Props) {
                             </FormItem>
                         )}
                     />
-                    <div className="border-t border-t-border pt-4">
+                    <div className="border-t-border border-t pt-4">
                         <Button size="xs" type="submit" disabled={isLoading}>
                             {isLoading ? <Loader size="sm" /> : "Update"}
                         </Button>

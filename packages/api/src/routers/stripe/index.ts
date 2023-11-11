@@ -55,7 +55,6 @@ export const stripeRouter = createRouter({
             customer: stripeId,
             return_url: `${url}/settings`,
         });
-        console.log(session.url);
         return session.url;
     }),
     getCheckoutSession: protectedProcedure.mutation(async (opts) => {

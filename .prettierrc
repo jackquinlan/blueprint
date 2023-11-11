@@ -17,9 +17,12 @@
         "<THIRD_PARTY_MODULES>",
         "",
         "^@blueprint/(.*)$",
-        "^maxpayload/(.*)$",
         "",
         "^@/(.*)$",
+        "^@/lib/(.*)$",
+        "^@/server/(.*)$",
+        "^@/trpc/(.*)$",
+        "^@/components/(.*)$",
         "^[./]"
     ]
 }

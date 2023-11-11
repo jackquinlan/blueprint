@@ -6,13 +6,14 @@
     "scripts": {
         "db:generate": "prisma generate",
         "db:push": "prisma db push --skip-generate",
-        "db:seed": "pnpx prisma db seed"
+        "db:seed": "pnpx prisma db seed",
+        "db:format": "pnpx prisma format"
     },
     "prisma": {
         "seed": "ts-node --transpile-only ./seed.ts"
     },
     "devDependencies": {
-        "prisma": "5.4.2"
+        "prisma": "5.5.2"
     },
     "dependencies": {
         "@prisma/client": "5.5.2",

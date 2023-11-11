@@ -58,7 +58,7 @@ model User {
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
 
-  email         String     @unique
+  email         String    @unique
   emailVerified DateTime?
   name          String?
   image         String?
@@ -72,18 +72,25 @@ model User {
   accounts Account[]
   sessions Session[]
 
+  tasks Task[]
+
   @@index([id])
   @@index([email])
   @@map(name: "users")
 }
 
-model Post {
+model Task {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
 
-  text String
+  text      String
+  completed Boolean @default(false)
 
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+
+  @@index([userId])
   @@index([id])
   @@map(name: "examples")
 }

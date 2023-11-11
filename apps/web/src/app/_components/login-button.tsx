@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useSearchParams } from "next/navigation";
 
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { signIn } from "next-auth/react";
 
 import { Button } from "@blueprint/ui";
@@ -18,14 +19,21 @@ export function LoginButton({}: Props) {
     return (
         <Button
             disabled={loading}
-            size="xs"
+            size="sm"
             onClick={() => {
                 setLoading(true);
                 signIn("github", { callbackUrl: callbackUrl, redirect: false });
             }}
             variant="outline"
         >
-            {loading ? <Loader /> : "Log In With Github"}
+            {loading ? (
+                <Loader />
+            ) : (
+                <div className="flex items-center gap-2">
+                    <GitHubLogoIcon className="h-4 w-4" />
+                    Log In with Github
+                </div>
+            )}
         </Button>
     );
 }

@@ -1,0 +1,26 @@
+import React from "react";
+
+import { format } from "date-fns";
+
+import { CreateTask } from "@/components/create-task";
+import { Task } from "@/components/task";
+import { api } from "@/trpc/server";
+
+export async function Todolist() {
+    const tasks = await api.task.getUserTasks.query();
+
+    return (
+        <div className="flex w-full flex-col md:w-1/2">
+            <div className="flex items-baseline gap-x-3">
+                <h1 className="text-lg font-medium">Tasks</h1>
+                <p className="text-xs">{format(new Date(), "iii, LLL do")}</p>
+            </div>
+            <div className="flex w-full flex-col gap-2">
+                <CreateTask />
+                {tasks.map((task) => (
+                    <Task key={task.id} task={task} />
+                ))}
+            </div>
+        </div>
+    );
+}

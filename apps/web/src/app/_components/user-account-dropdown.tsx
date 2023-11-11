@@ -10,6 +10,7 @@ import { signOut } from "next-auth/react";
 import {
     Avatar,
     AvatarImage,
+    Button,
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
@@ -25,7 +26,7 @@ export function UserAccountDropdown({ user }: Props) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger className="outline-none">
-                <Avatar className="h-7 w-7">
+                <Avatar className="h-8 w-8">
                     <AvatarImage src={user.image ?? undefined} alt="user" />
                 </Avatar>
             </DropdownMenuTrigger>
@@ -37,15 +38,25 @@ export function UserAccountDropdown({ user }: Props) {
                     </div>
                 </div>
                 <Separator />
-                <DropdownMenuItem>
-                    <Link
-                        className="flex w-full items-center justify-between gap-2"
-                        href="/settings"
-                    >
-                        <span>Settings</span>
-                        <GearIcon className="h-4 w-4" />
-                    </Link>
-                </DropdownMenuItem>
+                <div className="py-1">
+                    <DropdownMenuItem>
+                        <Link
+                            className="flex w-full items-center justify-between gap-2"
+                            href="/tasks"
+                        >
+                            <span>Dashboard</span>
+                        </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                        <Link
+                            className="flex w-full items-center justify-between gap-2"
+                            href="/settings"
+                        >
+                            <span>Settings</span>
+                            <GearIcon className="h-4 w-4" />
+                        </Link>
+                    </DropdownMenuItem>
+                </div>
                 <Separator />
                 <div className="py-1">
                     <DropdownMenuItem className="px-2">
