@@ -1,7 +1,8 @@
 import type { User } from "@prisma/client";
 
-import { FREE_PLAN, PREMIUM_PLAN, type SubscriptionPlan } from "@blueprint/config";
 import { db } from "@blueprint/db";
+
+import { FREE_PLAN, PREMIUM_PLAN, type SubscriptionPlan } from "./plans";
 
 export type UserSubscriptionPlan = SubscriptionPlan &
     Pick<User, "stripeCustomerId" | "stripeSubscriptionId"> & {

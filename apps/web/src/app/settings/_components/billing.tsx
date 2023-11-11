@@ -5,11 +5,11 @@ import React, { useState } from "react";
 import { Check } from "lucide-react";
 import { toast } from "sonner";
 
-import { FREE_PLAN, PREMIUM_PLAN, type SubscriptionPlan } from "@blueprint/config";
 import { Badge, Button, Separator } from "@blueprint/ui";
+import type { SubscriptionPlan, UserSubscriptionPlan } from "@blueprint/utils";
+import { FREE_PLAN, PREMIUM_PLAN } from "@blueprint/utils";
 
 import { Shell } from "@/components/shell";
-import type { UserSubscriptionPlan } from "@/lib/subscription";
 import { api } from "@/trpc/react";
 
 interface Props {
@@ -24,11 +24,11 @@ export function BillingInfo({ isCanceled, subscription }: Props) {
     });
     const createStripeCheckoutSession = api.stripe.getCheckoutSession.useMutation({
         onError: () => toast.error("An error occurred while creating your checkout session."),
-        onSuccess: (data) => window.location.href = data.url!,
+        onSuccess: (data) => (window.location.href = data.url!),
     });
     const createStripeUserPortal = api.stripe.getUserPortal.useMutation({
         onError: () => toast.error("An error occurred while creating your user portal."),
-        onSuccess: (data) => window.location.href = data!,
+        onSuccess: (data) => (window.location.href = data!),
     });
 
     async function handleCheckout() {
@@ -58,7 +58,7 @@ export function BillingInfo({ isCanceled, subscription }: Props) {
                             ? ""
                             : isCanceled
                             ? `Your plan will be canceled on ${endingDate}.`
-                            : `Your plan renews on ${endingDate}.` 
+                            : `Your plan renews on ${endingDate}.`
                     }
                     current={subscription.name == plan.name}
                     disabled={plan.name === "Basic"}
@@ -108,7 +108,7 @@ export function Plan({
                     ))}
                 </div>
             </div>
-            <div className="flex flex-col space-y-2 mt-2">
+            <div className="mt-2 flex flex-col space-y-2">
                 <p className="text-sm">{cancelText}</p>
                 <Button onClick={() => handleClick()} disabled={loading || disabled}>
                     {actionText}

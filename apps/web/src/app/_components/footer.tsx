@@ -1,6 +1,10 @@
 import React from "react";
+import Link from "next/link";
 
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { Shapes } from "lucide-react";
+
+import { Separator } from "@blueprint/ui";
 
 import { ThemeToggle } from "@/app/_components/theme-toggle";
 
@@ -22,7 +26,17 @@ export function Footer() {
                     .
                 </p>
             </div>
-            <ThemeToggle />
+            <div className="flex items-center justify-between sm:gap-4">
+                <Link
+                    href="https://github.com/jackquinlan/blueprint"
+                    target="_blank"
+                    className="hover:bg-muted rounded-md p-2"
+                >
+                    <GitHubLogoIcon className="h-4 w-4" />
+                </Link>
+                <Separator orientation="vertical" />
+                <ThemeToggle />
+            </div>
         </footer>
     );
 }

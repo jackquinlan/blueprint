@@ -3,17 +3,17 @@ import { redirect } from "next/navigation";
 
 import { stripe } from "@blueprint/api/src/routers/stripe";
 import { getServerAuthSession } from "@blueprint/auth";
-import { 
+import {
     Alert,
-    AlertTitle,
     AlertDescription,
-    Tabs, 
-    TabsContent, 
-    TabsList, 
-    TabsTrigger 
+    AlertTitle,
+    Tabs,
+    TabsContent,
+    TabsList,
+    TabsTrigger,
 } from "@blueprint/ui";
+import { getUserPlan } from "@blueprint/utils";
 
-import { getUserPlan } from "@/lib/subscription";
 import { BillingInfo } from "./_components/billing";
 import { ProfileSettings } from "./_components/profile-settings";
 
@@ -43,7 +43,8 @@ export default async function Settings() {
                 <Alert className="mb-2" variant="info">
                     <AlertTitle>Blueprint billing is in test-mode</AlertTitle>
                     <AlertDescription>
-                        You will not be charged. Please use one of the Stripe test cards to test the billing system.
+                        You will not be charged. Please use one of the Stripe test cards to test the
+                        billing system.
                     </AlertDescription>
                 </Alert>
                 <BillingInfo isCanceled={isCanceled} subscription={subscription} />
