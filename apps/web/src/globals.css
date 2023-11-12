@@ -87,3 +87,8 @@
         background-color: #d8b4fe;
     } */
 }
+
+.background-grid {
+    background-image: linear-gradient(to right, rgba(189, 189, 189, 0.133) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(189, 189, 189, 0.133) 1px, transparent 1px);
+}
