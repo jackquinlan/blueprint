@@ -38,11 +38,11 @@ export function CreateTask() {
     async function handleCreate(data: z.infer<typeof createTaskSchema>) {
         startTransition(async () => {
             try {
-                createTask.mutate({ text: data.text });
+                await createTask.mutateAsync({ text: data.text });
                 toast.success("New task added successfully!");
                 form.reset();
-            } catch (err) {
-                toast.error("Could not create task.");
+            } catch (err: any) {
+                toast.error(err.message);
             }
         });
     }

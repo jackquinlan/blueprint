@@ -4,6 +4,7 @@
 -   Blueprint aims to provide a minimal set of feautures and examples that you can use to expand into your own projects and customize to fit your needs.
 
 -   This project is inspired by shadcn's Taxonomy project (https://tx.shadcn.com/).
+-   Check out shadcn on twitter https://twitter.com/shadcn
 
 ## Getting Started
 

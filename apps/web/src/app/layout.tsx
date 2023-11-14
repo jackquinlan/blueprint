@@ -7,6 +7,7 @@ import { Toaster } from "sonner";
 
 import "@/globals.css";
 
+import { Background } from "@/app/_components/background";
 import { Footer } from "@/app/_components/footer";
 import { Nav } from "@/app/_components/nav";
 import { cn, constructMetadata } from "@/lib/utils";
@@ -37,6 +38,9 @@ export default function RootLayout({ children }: Props) {
                     </Providers>
                 </TRPCReactProvider>
                 <Toaster position="bottom-right" visibleToasts={6} richColors />
+                <div className="absolute -inset-40 left-0 top-0 -z-30 h-screen w-screen">
+                    <Background />
+                </div>
             </body>
         </html>
     );

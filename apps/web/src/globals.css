@@ -87,3 +87,9 @@
         background-color: #d8b4fe;
     } */
 }
+
+/* Shout out to typehero for background grid inspiration https://typehero.dev/ */
+.background-grid {
+    background-image: linear-gradient(to right, #8882 1px, transparent 1px),
+    linear-gradient(to bottom, #8882 1px, transparent 1px);    
+}
