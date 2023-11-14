@@ -1,7 +1,11 @@
 import React from "react";
+import Link from "next/link";
 
-import { Button } from "@blueprint/ui";
+import { Star } from "lucide-react";
 
+import { getButtonClasses } from "@blueprint/ui";
+
+import { cn } from "@/lib/utils";
 import { Shell } from "@/components/shell";
 
 interface FeatureProps {
@@ -15,13 +19,12 @@ const features: FeatureProps[] = [
         description: "Take advantage of React server components and the latest Next.js features.",
     },
     {
-        title: "Shadcn UI Components",
-        description: "Beautiful UI components built with Radix UI and Tailwind CSS by shadcn.",
+        title: "Shadcn UI",
+        description: "Beautiful UI components built with RadixUI and Tailwind by shadcn.",
     },
     {
         title: "tRPC",
-        description:
-            "Create end-to-end typesafe APIs that can be called from server and client components.",
+        description: "Create end-to-end typesafe APIs that can be called from the server and client.",
     },
     {
         title: "Next Auth",
@@ -29,12 +32,11 @@ const features: FeatureProps[] = [
     },
     {
         title: "Prisma + PlanetScale",
-        description:
-            "Typesafe database ORM, automated migrations and auto-completion deployed on PlanetScale.",
+        description: "Typesafe database ORM for MySQL deployed on PlanetScale.",
     },
     {
         title: "Stripe",
-        description: "Manage payments and subscriptions using the Stripe.",
+        description: "Manage payments and subscriptions using Stripe.",
     },
 ];
 
@@ -53,11 +55,21 @@ export default async function Home() {
                     ground faster so you can focus less on the tedious setup and more on building
                     incredible experiences for your users.
                 </p>
-                <Button>Star on Github</Button>
             </div>
-            <Shell className="flex w-full flex-col items-center justify-center space-y-4 xl:w-2/3">
+            <Link
+                href="https://github.com/jackquinlan/blueprint"
+                target="_blank"
+                className={cn(
+                    getButtonClasses({ variant: "primary" }),
+                    "flex w-fit items-center gap-1",
+                )}
+            >
+                <Star className="h-4 w-4 text-yellow-400 fill-yellow-200" />
+                Star on Github
+            </Link>
+            <Shell className="flex w-full flex-col items-center justify-center space-y-4 pb-8 xl:w-2/3">
                 <div className="w-full text-center">
-                    <h1 className="text-2xl font-bold">Included Features</h1>
+                    <h1 className="text-3xl font-bold">Features</h1>
                 </div>
                 <div className="flex w-full justify-center">
                     <div className="container grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
