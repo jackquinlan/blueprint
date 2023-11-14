@@ -3,9 +3,10 @@ import React from "react";
 import { format } from "date-fns";
 import { Inbox } from "lucide-react";
 
+import { api } from "@/trpc/server";
 import { CreateTask } from "@/app/tasks/_components/create-task";
 import { Task } from "@/app/tasks/_components/task";
-import { api } from "@/trpc/server";
+import { Shell } from "@/components/shell";
 
 export async function Todolist() {
     const tasks = await api.task.getUserTasks.query();
@@ -19,9 +20,9 @@ export async function Todolist() {
             <div className="flex w-full flex-col gap-2">
                 <CreateTask />
                 {tasks.length === 0 && (
-                    <div className="flex flex-col justify-center">
+                    <Shell className="flex flex-col items-center">
                         <Inbox /> No tasks.
-                    </div>
+                    </Shell>
                 )}
                 {tasks.map((task) => (
                     <Task key={task.id} task={task} />
