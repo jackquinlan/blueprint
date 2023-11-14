@@ -28,7 +28,7 @@ export const taskRouter = createRouter({
                     },
                 });
                 if (tasks >= 5) {
-                    throw new RequiresPremiumError();
+                    throw new RequiresPremiumError("You need to upgrade to premium to create more tasks.");
                 }
             }
             return await opts.ctx.db.task.create({

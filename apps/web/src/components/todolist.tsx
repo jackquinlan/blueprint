@@ -1,6 +1,7 @@
 import React from "react";
 
 import { format } from "date-fns";
+import { Inbox } from "lucide-react";
 
 import { CreateTask } from "@/components/create-task";
 import { Task } from "@/components/task";
@@ -17,6 +18,11 @@ export async function Todolist() {
             </div>
             <div className="flex w-full flex-col gap-2">
                 <CreateTask />
+                {tasks.length === 0 && (
+                    <div className="flex flex-col justify-center">
+                        <Inbox /> No tasks.
+                    </div>
+                )}
                 {tasks.map((task) => (
                     <Task key={task.id} task={task} />
                 ))}
