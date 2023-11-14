@@ -1,0 +1,5 @@
+{
+    "extends": "@blueprint/tsconfig/base.json",
+    "compilerOptions": {},
+    "include": ["src/**/*.ts"],
+}

@@ -190,6 +190,9 @@ importers:
       '@blueprint/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/tsconfig
+      '@types/node':
+        specifier: 20.8.0
+        version: 20.8.0
       typescript:
         specifier: 5.2.2
         version: 5.2.2

@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 
 import { getServerAuthSession } from "@blueprint/auth";
 
-import { Todolist } from "@/components/todolist";
+import { Todolist } from "@/app/tasks/_components/todolist";
 
 export default async function Tasks() {
     const session = getServerAuthSession();

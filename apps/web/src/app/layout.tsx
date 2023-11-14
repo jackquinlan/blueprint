@@ -38,7 +38,7 @@ export default function RootLayout({ children }: Props) {
                     </Providers>
                 </TRPCReactProvider>
                 <Toaster position="bottom-right" visibleToasts={6} richColors />
-                <div className="absolute -inset-40 -z-30 left-0 top-0 w-screen h-screen">
+                <div className="absolute -inset-40 left-0 top-0 -z-30 h-screen w-screen">
                     <Background />
                 </div>
             </body>

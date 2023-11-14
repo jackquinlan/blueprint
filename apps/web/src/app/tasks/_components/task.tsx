@@ -122,7 +122,7 @@ export function TaskActions({ task }: { task: Task }) {
     return (
         <React.Fragment>
             <DropdownMenu>
-                <DropdownMenuTrigger className="outline-none px-2">
+                <DropdownMenuTrigger className="px-2 outline-none">
                     <DotsHorizontalIcon className="h-4 w-4 cursor-pointer" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" side="bottom" className="w-10">
