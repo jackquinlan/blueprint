@@ -6,7 +6,7 @@
 -   This project is inspired by shadcn's Taxonomy project (https://tx.shadcn.com/).
 -   Check out shadcn on twitter https://twitter.com/shadcn
 
--   I would also like to thank Theo and the T3 community for their amazing open-source work. They have all motivated and inspired me to start building!
+-   I would also like to thank Theo (https://twitter.com/t3dotgg) and the T3 community (https://create.t3.gg/) for their amazing open-source work. They have all motivated and inspired me to start building!
 
 ## Getting Started
 
