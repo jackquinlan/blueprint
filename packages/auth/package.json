@@ -4,7 +4,7 @@
     "main": "src/index.ts",
     "dependencies": {
         "@blueprint/db": "workspace:*",
-        "next-auth": "^4.23.2"
+        "next-auth": "^4.24.5"
     },
     "devDependencies": {
         "@blueprint/tsconfig": "workspace:*",

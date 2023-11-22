@@ -9,8 +9,8 @@
         "@blueprint/utils": "workspace:*",
         "@trpc/client": "^10.40.0",
         "@trpc/server": "^10.40.0",
-        "next": "13.5.4",
-        "next-auth": "^4.23.2",
+        "next": "^14.0.3",
+        "next-auth": "^4.24.5",
         "stripe": "^14.1.0",
         "superjson": "^2.0.0",
         "zod": "^3.22.4"
