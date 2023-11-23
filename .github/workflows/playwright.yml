@@ -16,9 +16,9 @@ jobs:
     - uses: pnpm/action-setup@v2
       with:
         version: 8
-        run_install: |
-          - recursive: true
-            args: [--frozen-lockfile, --strict-peer-dependencies]
+        run_install: false
+    - name: Install dependencies
+      run: pnpm install
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
       working-directory: apps/web
