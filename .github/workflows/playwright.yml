@@ -13,12 +13,11 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 18
-    - name: Install node-gyp
-      run: "npm install -g node-gyp"
     - uses: pnpm/action-setup@v2
       with:
         version: 8
         run_install: false
+    - run:  rm pnpm-lock.yaml
     - name: Install dependencies
       run: pnpm install
     - name: Install Playwright Browsers
