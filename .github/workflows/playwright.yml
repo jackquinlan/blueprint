@@ -20,7 +20,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Install dependencies
-      run: pnpm install
+      run: pnpm install --ignore-scripts
       working-directory: apps/web
     - name: Run Playwright tests
       working-directory: apps/web
