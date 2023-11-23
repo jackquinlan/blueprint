@@ -17,11 +17,10 @@ jobs:
       with:
         version: 8
         run_install: false
-    - run:  rm pnpm-lock.yaml
-    - name: Install dependencies
-      run: pnpm install
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Install dependencies
+      run: pnpm install
       working-directory: apps/web
     - name: Run Playwright tests
       working-directory: apps/web
