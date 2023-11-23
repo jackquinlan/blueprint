@@ -20,11 +20,9 @@ jobs:
       run: pnpm install
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-      with:
-        cwd: apps/web
+      working-directory: apps/web
     - name: Run Playwright tests
-      with:
-        cwd: apps/web
+      working-directory: apps/web
       run: pnpm run e2e
     - uses: actions/upload-artifact@v3
       if: always()
