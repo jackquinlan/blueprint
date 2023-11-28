@@ -15,6 +15,7 @@ import {
 import { getUserPlan } from "@blueprint/utils";
 
 import { BillingInfo } from "./_components/billing";
+import { DeleteAccount } from "./_components/delete-account";
 import { ProfileSettings } from "./_components/profile-settings";
 
 export default async function Settings() {
@@ -34,14 +35,15 @@ export default async function Settings() {
                 <TabsTrigger value="general">General</TabsTrigger>
                 <TabsTrigger value="billing">Billing</TabsTrigger>
             </TabsList>
-            <TabsContent value="general" className="w-full md:w-2/3">
-                <h1 className="py-4 text-3xl font-medium">Profile Settings</h1>
+            <TabsContent value="general" className="w-full space-y-4 md:w-2/3">
+                <h1 className="pt-4 text-3xl font-medium">Profile Settings</h1>
                 <ProfileSettings user={session.user} />
+                <DeleteAccount user={session.user} />
             </TabsContent>
             <TabsContent value="billing">
                 <h1 className="py-4 text-3xl font-medium">Billing Settings</h1>
                 <Alert className="mb-2" variant="info">
-                    <AlertTitle>Blueprint billing is in test-mode</AlertTitle>
+                    <AlertTitle className="font-semibold">Blueprint billing is in test-mode</AlertTitle>
                     <AlertDescription>
                         You will not be charged. Please use one of the Stripe test cards to test the
                         billing system.

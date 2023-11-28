@@ -1,8 +1,10 @@
 import type { NextAuthOptions, Session } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 
 import { db } from "@blueprint/db";
 
+import { verifyPassword } from "./crypto";
 import CustomAdapter from "./next-auth-adapter";
 
 const authOptions: NextAuthOptions = {
@@ -39,12 +41,40 @@ const authOptions: NextAuthOptions = {
             clientId: process.env.GITHUB_CLIENT_ID!,
             clientSecret: process.env.GITHUB_CLIENT_SECRET!,
         }),
+        CredentialsProvider({
+            name: "credentials",
+            credentials: {
+                email: { label: "Email", type: "email", placeholder: "you@email.com" },
+                password: { label: "Password", type: "password", placeholder: "••••••••••" },
+            },
+            authorize: async (credentials) => {
+                if (!credentials) {
+                    throw new Error("No credentials were provided");
+                }
+                const { email, password } = credentials;
+
+                const user = await db.user.findFirst({
+                    where: {
+                        email: email,
+                    },
+                });
+                if (!user || !user.hashedPassword) {
+                    throw new Error("No user found");
+                }
+                if (!(await verifyPassword(user.hashedPassword, password))) {
+                    throw new Error("Invalid email or password.");
+                }
+                return user;
+            },
+        }),
+        /**
+         * Add any more providers you want here
+         *
+         * @see https://next-auth.js.org/configuration/providers
+         */
     ],
     session: {
         strategy: "jwt",
-    },
-    pages: {
-        error: "/",
     },
 };
 

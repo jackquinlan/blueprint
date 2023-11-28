@@ -9,7 +9,6 @@
         "lint": {},
         "dev": {
             "cache": false,
-            "persistent": true,
             "dependsOn": ["^db:generate"]
         },
         "db:generate": {
