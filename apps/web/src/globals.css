@@ -83,9 +83,10 @@
     /**
      * Update default highlight color
      */
-    /* ::selection {
-        background-color: #d8b4fe;
-    } */
+    ::selection {
+        background-color: black;
+        color: white;
+    }
 }
 
 /* Shout out to typehero for background grid inspiration https://typehero.dev/ */

@@ -4,6 +4,7 @@
     "main": "src/index.ts",
     "dependencies": {
         "@blueprint/db": "workspace:*",
+        "hash-wasm": "^4.11.0",
         "next-auth": "^4.24.5"
     },
     "devDependencies": {

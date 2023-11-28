@@ -47,7 +47,7 @@ export function ProfileSettings({ user }: Props) {
     async function handleSubmit(data: z.infer<typeof updateProfileSchema>) {
         startTransition(async () => {
             try {
-                updateUser.mutate({ id: user.id, name: data.name });
+                await updateUser.mutateAsync({ id: user.id, name: data.name });
                 toast.success("Profile updated successfully!");
             } catch (err) {
                 toast.error("An error occurred while updating your profile.");
@@ -74,11 +74,9 @@ export function ProfileSettings({ user }: Props) {
                             </FormItem>
                         )}
                     />
-                    <div className="border-t-border border-t pt-4">
-                        <Button size="xs" type="submit" disabled={isLoading}>
-                            {isLoading ? <Loader size="sm" /> : "Update"}
-                        </Button>
-                    </div>
+                    <Button size="sm" type="submit" disabled={isLoading}>
+                        {isLoading ? <Loader size="sm" /> : "Update"}
+                    </Button>
                 </Shell>
             </form>
         </Form>

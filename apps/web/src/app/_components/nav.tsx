@@ -1,13 +1,13 @@
 import React, { Suspense } from "react";
 import Link from "next/link";
 
-import { Shapes } from "lucide-react";
+import { LogIn, Shapes } from "lucide-react";
 
 import { getServerAuthSession } from "@blueprint/auth";
 import { Badge, getButtonClasses } from "@blueprint/ui";
 
-import { LoginButton } from "@/app/_components/login-button";
 import { UserAccountDropdown } from "@/app/_components/user-account-dropdown";
+import { cn } from "@/lib/utils";
 import { api } from "@/trpc/server";
 
 export async function Nav() {
@@ -29,7 +29,19 @@ export async function Nav() {
                 )}
             </div>
             <Suspense>
-                {session ? <UserAccountDropdown user={session.user} /> : <LoginButton />}
+                {session ? (
+                    <UserAccountDropdown user={session.user} />
+                ) : (
+                    <Link
+                        href="/login"
+                        className={cn(
+                            "flex items-center gap-1",
+                            getButtonClasses({ variant: "outline", size: "sm" }),
+                        )}
+                    >
+                        Log In <LogIn className="h-4 w-4" />
+                    </Link>
+                )}
             </Suspense>
         </nav>
     );

@@ -9,6 +9,7 @@ import { signOut } from "next-auth/react";
 
 import {
     Avatar,
+    AvatarFallback,
     AvatarImage,
     DropdownMenu,
     DropdownMenuContent,
@@ -27,6 +28,9 @@ export function UserAccountDropdown({ user }: Props) {
             <DropdownMenuTrigger className="outline-none">
                 <Avatar className="h-8 w-8">
                     <AvatarImage src={user.image ?? undefined} alt="user" />
+                    <AvatarFallback className="bg-gradient-to-r from-sky-400 to-cyan-300 text-white">
+                        {user.name?.charAt(0).toUpperCase()}
+                    </AvatarFallback>
                 </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-48 px-0 py-1" align="end">

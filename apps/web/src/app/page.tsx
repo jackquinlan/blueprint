@@ -3,10 +3,10 @@ import Link from "next/link";
 
 import { Star } from "lucide-react";
 
-import { getButtonClasses } from "@blueprint/ui";
+import { Badge, getButtonClasses } from "@blueprint/ui";
 
 import { Shell } from "@/components/shell";
-import { cn } from "@/lib/utils";
+import { cn, getGithubStars } from "@/lib/utils";
 
 interface FeatureProps {
     title: string;
@@ -39,15 +39,24 @@ const features: FeatureProps[] = [
         title: "Stripe",
         description: "Manage payments and subscriptions using Stripe.",
     },
+    {
+        title: "Resend",
+        description: "Build email templates with React Email and send them with Resend.",
+    },
+    {
+        title: "More coming soon...",
+        description: "I am always looking for more features to implement.",
+    },
 ];
 
 export default async function Home() {
+    const stars = await getGithubStars();
     return (
-        <div className="container flex flex-col items-center justify-center space-y-12">
+        <div className="container flex flex-col items-center justify-center space-y-8">
             <div className="mt-24 space-y-4 text-center lg:w-2/3">
                 <h1 className="text-5xl font-bold">
                     Your Application{" "}
-                    <span className="bg-gradient-to-r from-indigo-500 to-blue-500 bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-sky-400 to-cyan-300 bg-clip-text text-transparent">
                         Blueprint
                     </span>
                 </h1>
@@ -67,13 +76,16 @@ export default async function Home() {
             >
                 <Star className="h-4 w-4 fill-yellow-200 text-yellow-400" />
                 Star on Github
+                <Badge className="rounded-full" variant="success">
+                    {stars}
+                </Badge>
             </Link>
             <Shell className="flex w-full flex-col items-center justify-center space-y-4 pb-8 xl:w-2/3">
                 <div className="w-full text-center">
                     <h1 className="text-3xl font-bold">Features</h1>
                 </div>
                 <div className="flex w-full justify-center">
-                    <div className="container grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="container grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
                         {features.map((feature) => (
                             <Feature key={feature.title} {...feature} />
                         ))}
@@ -86,7 +98,7 @@ export default async function Home() {
 
 function Feature({ title, description }: FeatureProps) {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col space-y-2">
             <h1 className="text-xl font-medium">{title}</h1>
             <h4 className="text-sm text-zinc-500">{description}</h4>
         </div>

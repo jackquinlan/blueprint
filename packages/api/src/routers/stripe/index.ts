@@ -12,7 +12,7 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "", {
     },
 });
 
-const url =
+export const url =
     process.env.NODE_ENV === "production"
         ? "https://blueprint.jackquinlan.co"
         : "http://localhost:3000";
