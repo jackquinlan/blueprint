@@ -13,7 +13,9 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "", {
 });
 
 const url =
-    process.env.NODE_ENV === "production" ? "https://blueprint.jackquinlan.co" : "http://localhost:3000";
+    process.env.NODE_ENV === "production"
+        ? "https://blueprint.jackquinlan.co"
+        : "http://localhost:3000";
 
 export const stripeRouter = createRouter({
     webhooks: webhookRouter,

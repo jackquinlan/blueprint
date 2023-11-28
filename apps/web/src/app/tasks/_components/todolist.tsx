@@ -3,10 +3,10 @@ import React from "react";
 import { format } from "date-fns";
 import { Inbox } from "lucide-react";
 
-import { api } from "@/trpc/server";
 import { CreateTask } from "@/app/tasks/_components/create-task";
 import { Task } from "@/app/tasks/_components/task";
 import { Shell } from "@/components/shell";
+import { api } from "@/trpc/server";
 
 export async function Todolist() {
     const tasks = await api.task.getUserTasks.query();

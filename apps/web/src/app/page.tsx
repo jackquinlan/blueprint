@@ -5,8 +5,8 @@ import { Star } from "lucide-react";
 
 import { getButtonClasses } from "@blueprint/ui";
 
-import { cn } from "@/lib/utils";
 import { Shell } from "@/components/shell";
+import { cn } from "@/lib/utils";
 
 interface FeatureProps {
     title: string;
@@ -24,7 +24,8 @@ const features: FeatureProps[] = [
     },
     {
         title: "tRPC",
-        description: "Create end-to-end typesafe APIs that can be called from the server and client.",
+        description:
+            "Create end-to-end typesafe APIs that can be called from the server and client.",
     },
     {
         title: "Next Auth",
@@ -64,7 +65,7 @@ export default async function Home() {
                     "flex w-fit items-center gap-1",
                 )}
             >
-                <Star className="h-4 w-4 text-yellow-400 fill-yellow-200" />
+                <Star className="h-4 w-4 fill-yellow-200 text-yellow-400" />
                 Star on Github
             </Link>
             <Shell className="flex w-full flex-col items-center justify-center space-y-4 pb-8 xl:w-2/3">

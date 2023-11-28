@@ -2,6 +2,7 @@
     "extends": "@blueprint/tsconfig/nextjs.json",
     "compilerOptions": {
         "baseUrl": ".",
+        "outDir": "dist/ts",
         "paths": {
             "@/*": ["src/*"]
         },
