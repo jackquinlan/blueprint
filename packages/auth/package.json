@@ -8,7 +8,6 @@
     },
     "devDependencies": {
         "@blueprint/tsconfig": "workspace:*",
-        "@types/node": "20.8.0",
-        "typescript": "5.2.2"
+        "@types/node": "20.8.0"
     }
 }

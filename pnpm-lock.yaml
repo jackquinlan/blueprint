@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
@@ -31,6 +35,9 @@ importers:
       turbo:
         specifier: latest
         version: 1.10.16
+      typescript:
+        specifier: 5.2.2
+        version: 5.2.2
 
   apps/web:
     dependencies:
@@ -134,9 +141,6 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.3.2)
-      typescript:
-        specifier: 5.2.2
-        version: 5.2.2
 
   packages/api:
     dependencies:
@@ -174,9 +178,6 @@ importers:
       '@blueprint/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/tsconfig
-      typescript:
-        specifier: 5.2.2
-        version: 5.2.2
 
   packages/auth:
     dependencies:
@@ -193,9 +194,6 @@ importers:
       '@types/node':
         specifier: 20.8.0
         version: 20.8.0
-      typescript:
-        specifier: 5.2.2
-        version: 5.2.2
 
   packages/db:
     dependencies:
@@ -300,9 +298,6 @@ importers:
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
-      typescript:
-        specifier: 5.2.2
-        version: 5.2.2
 
   packages/utils:
     dependencies:
@@ -340,9 +335,6 @@ importers:
       eslint:
         specifier: 8.50.0
         version: 8.50.0
-      typescript:
-        specifier: 5.2.2
-        version: 5.2.2
 
   tooling/tailwind:
     dependencies:
@@ -4589,7 +4581,3 @@ packages:
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
