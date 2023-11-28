@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "main": "src/index.ts",
     "dependencies": {
-        "@blueprint/db": "workspace:*"
+        "@blueprint/db": "workspace:*",
+        "zod": "^3.22.4"
     }
 }

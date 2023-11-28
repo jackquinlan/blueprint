@@ -8,9 +8,18 @@ export default withAuth(
         const token = await getToken({ req });
 
         const isAuthPage =
-            req.nextUrl.pathname.startsWith("/login") || req.nextUrl.pathname === "/";
+            req.nextUrl.pathname.startsWith("/login") ||
+            req.nextUrl.pathname.startsWith("/signup") ||
+            req.nextUrl.pathname.startsWith("/forgot-password");
+
+        if (req.nextUrl.pathname === "/" || req.nextUrl.pathname === "/reset-password") {
+            return null;
+        }
 
         if (isAuthPage) {
+            if (!!token) {
+                return NextResponse.redirect(new URL("/", req.url));
+            }
             return null;
         }
 

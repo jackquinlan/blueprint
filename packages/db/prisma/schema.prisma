@@ -39,15 +39,6 @@ model Session {
   @@map(name: "sessions")
 }
 
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
-
-  @@unique([identifier, token])
-  @@map(name: "verification_tokens")
-}
-
 enum Plan {
   free
   premium
@@ -58,10 +49,11 @@ model User {
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
 
-  email         String    @unique
-  emailVerified DateTime?
-  name          String?
-  image         String?
+  email          String    @unique
+  emailVerified  DateTime?
+  name           String?
+  image          String?
+  hashedPassword String?
 
   plan                   Plan      @default(free)
   stripeCustomerId       String?   @unique @map(name: "stripe_customer_id")
@@ -69,14 +61,37 @@ model User {
   stripePriceId          String?   @map(name: "stripe_price_id")
   stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
 
-  accounts Account[]
-  sessions Session[]
+  accounts    Account[]
+  sessions    Session[]
+  resetTokens ResetPasswordToken[]
 
   tasks Task[]
 
   @@index([id])
   @@index([email])
   @@map(name: "users")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map(name: "verification_tokens")
+}
+
+model ResetPasswordToken {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  used      Boolean  @default(false)
+
+  @@index([id])
+  @@index([userId])
+  @@map(name: "reset_password_tokens")
 }
 
 model Task {
