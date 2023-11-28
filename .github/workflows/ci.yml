@@ -37,5 +37,5 @@ jobs:
             - name: Generate Prisma Client
               run: pnpm run db:generate
               working-directory: ./packages/db
-            - name: Lint
+            - name: TypeScript Check
               run: pnpm run ts-check
