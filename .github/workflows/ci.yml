@@ -17,6 +17,9 @@ jobs:
                   version: 8
             - name: Install dependencies
               run: pnpm install
+            - name: Generate Prisma Client
+              run: pnpm run db:generate
+              working-directory: ./packages/db
             - name: Lint
               run: pnpm run lint:strict
     tsc:
@@ -31,5 +34,8 @@ jobs:
                   version: 8
             - name: Install dependencies
               run: pnpm install
+            - name: Generate Prisma Client
+              run: pnpm run db:generate
+              working-directory: ./packages/db
             - name: Lint
               run: pnpm run ts-check
