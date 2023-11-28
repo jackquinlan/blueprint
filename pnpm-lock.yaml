@@ -107,6 +107,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      resend:
+        specifier: ^2.0.0
+        version: 2.0.0
       sonner:
         specifier: ^1.0.3
         version: 1.0.3(react-dom@18.2.0)(react@18.2.0)
