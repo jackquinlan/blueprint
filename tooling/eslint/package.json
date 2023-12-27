@@ -13,8 +13,7 @@
         "eslint-plugin-react": "7.33.2"
     },
     "devDependencies": {
-        "eslint": "8.50.0",
-        "typescript": "5.2.2"
+        "eslint": "8.50.0"
     },
     "publishConfig": {
         "access": "public"

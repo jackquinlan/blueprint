@@ -2,4 +2,8 @@
     "extends": "@blueprint/tsconfig/lib.json",
     "include": ["."],
     "exclude": ["dist", "build", "node_modules"],
+    "compilerOptions": {
+        "composite": true,
+        "outDir": "dist/ts"
+    },
 }

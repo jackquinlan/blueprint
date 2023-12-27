@@ -13,6 +13,11 @@ coverage
 out/
 build
 
+# typescript
+*.tsbuildinfo
+*.d.ts
+*.d.ts.map
+
 # misc
 .DS_Store
 *.pem

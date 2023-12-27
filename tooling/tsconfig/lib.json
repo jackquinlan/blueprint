@@ -6,6 +6,7 @@
         "jsx": "react-jsx",
         "lib": ["ES2015", "DOM"],
         "target": "es6",
-        "module": "ESNext"
+        "module": "ESNext",
+        "composite": true
     }
 }

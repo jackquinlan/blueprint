@@ -43,7 +43,9 @@ export default async function Settings() {
             <TabsContent value="billing">
                 <h1 className="py-4 text-3xl font-medium">Billing Settings</h1>
                 <Alert className="mb-2" variant="info">
-                    <AlertTitle className="font-semibold">Blueprint billing is in test-mode</AlertTitle>
+                    <AlertTitle className="font-semibold">
+                        Blueprint billing is in test-mode
+                    </AlertTitle>
                     <AlertDescription>
                         You will not be charged. Please use one of the Stripe test cards to test the
                         billing system.

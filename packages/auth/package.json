@@ -8,8 +8,6 @@
         "next-auth": "^4.24.5"
     },
     "devDependencies": {
-        "@blueprint/tsconfig": "workspace:*",
-        "@types/node": "20.8.0",
-        "typescript": "5.2.2"
+        "@blueprint/tsconfig": "workspace:*"
     }
 }

@@ -1,3 +1,23 @@
 {
-    "extends": "@blueprint/tsconfig/base.json"
+    "extends": "@blueprint/tsconfig/base.json",
+    "references": [
+        {
+            "path": "./apps/web/tsconfig.json"
+        },
+        {
+            "path": "./packages/api/tsconfig.json"
+        },
+        {
+            "path": "./packages/auth/tsconfig.json"
+        },
+        {
+            "path": "./packages/db/tsconfig.json"
+        },
+        {
+            "path": "./packages/ui/tsconfig.json"
+        },
+        {
+            "path": "./packages/utils/tsconfig.json"
+        }
+    ]
 }

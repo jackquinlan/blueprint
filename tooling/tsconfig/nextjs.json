@@ -5,13 +5,13 @@
     "compilerOptions": {
         "plugins": [{ "name": "next" }],
         "allowJs": true,
-        "declaration": false,
         "declarationMap": false,
+        "composite": true,
+        "emitDeclarationOnly": true,
         "incremental": true,
         "jsx": "preserve",
         "lib": ["dom", "dom.iterable", "esnext"],
         "module": "esnext",
-        "noEmit": true,
         "resolveJsonModule": true,
         "strict": false,
         "target": "ES2021"
