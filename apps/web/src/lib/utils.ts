@@ -21,7 +21,6 @@ export function constructMetadata({
         title,
         description,
         icons,
-        themeColor: "#FFF",
     };
 }
 
