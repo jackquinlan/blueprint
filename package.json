@@ -6,6 +6,7 @@
         "clean": "find . -name node_modules -o -name .next -o -name .turbo -o -name dist -type d -prune | xargs rm -rf",
         "dev": "turbo run dev",
         "lint": "turbo run lint",
+        "ts-check": "tsc --build --pretty",
         "lint:strict": "eslint --max-warnings=0 apps/**/*.{ts,tsx}",
         "format": "prettier --write \"**/*.{ts,tsx,md}\""
     },
@@ -14,10 +15,12 @@
         "@blueprint/tailwind": "workspace:*",
         "@blueprint/tsconfig": "workspace:*",
         "@blueprint/eslint-config": "workspace:*",
+        "@types/node": "^20.10.0",
         "eslint": "^8.48.0",
         "husky": "^8.0.3",
         "prettier": "^3.0.3",
         "prettier-plugin-tailwindcss": "^0.5.6",
+        "typescript": "5.2.2",
         "turbo": "latest"
     },
     "workspaces": [

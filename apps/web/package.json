@@ -21,6 +21,7 @@
         "@trpc/react-query": "^10.40.0",
         "@trpc/server": "^10.40.0",
         "class-variance-authority": "^0.7.0",
+        "resend": "^2.0.0",
         "clsx": "^2.0.0",
         "date-fns": "^2.30.0",
         "geist": "^1.0.0",
@@ -37,13 +38,11 @@
         "zod": "^3.22.4"
     },
     "devDependencies": {
-        "@types/node": "20.8.0",
         "@types/react": "18.2.24",
         "@types/react-dom": "18.2.8",
         "autoprefixer": "10.4.16",
         "postcss": "8.4.31",
         "tailwindcss": "3.3.2",
-        "tailwindcss-animate": "^1.0.7",
-        "typescript": "5.2.2"
+        "tailwindcss-animate": "^1.0.7"
     }
 }

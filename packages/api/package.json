@@ -19,7 +19,6 @@
         "zod": "^3.22.4"
     },
     "devDependencies": {
-        "@blueprint/tsconfig": "workspace:*",
-        "typescript": "5.2.2"
+        "@blueprint/tsconfig": "workspace:*"
     }
 }
