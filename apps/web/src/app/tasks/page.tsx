@@ -6,13 +6,13 @@ import { getServerAuthSession } from "@blueprint/auth";
 import { Todolist } from "@/app/tasks/_components/todolist";
 
 export default async function Tasks() {
-    const session = getServerAuthSession();
+    const session = await getServerAuthSession();
     if (!session) {
         return redirect("/");
     }
     return (
         <div className="container flex w-full justify-center">
-            <Todolist />
+            <Todolist user={session.user} />
         </div>
     );
 }

@@ -1,19 +1,24 @@
 import React, { Suspense } from "react";
 import Link from "next/link";
 
+import type { User } from "next-auth";
 import { LogIn, Shapes } from "lucide-react";
 
 import { getServerAuthSession } from "@blueprint/auth";
+import { db } from "@blueprint/db";
 import { Badge, getButtonClasses } from "@blueprint/ui";
 
 import { UserAccountDropdown } from "@/app/_components/user-account-dropdown";
 import { cn } from "@/lib/utils";
-import { api } from "@/trpc/server";
 
 export async function Nav() {
     const session = await getServerAuthSession();
 
-    const tasks = session ? await api.task.getUserTasks.query() : undefined;
+    const tasks = session && session.user ? await db.task.findMany({
+        where: {
+            userId: session.user.id,
+        },
+    }): undefined;
 
     return (
         <nav className="container flex items-center justify-between py-4">

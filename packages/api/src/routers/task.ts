@@ -5,13 +5,6 @@ import { getUserPlan, RequiresPremiumError } from "@blueprint/utils";
 import { createRouter, protectedProcedure } from "../trpc";
 
 export const taskRouter = createRouter({
-    getUserTasks: protectedProcedure.query(async (opts) => {
-        return await opts.ctx.db.task.findMany({
-            where: {
-                userId: opts.ctx.session.user.id,
-            },
-        });
-    }),
     createTask: protectedProcedure
         .input(
             z.object({
