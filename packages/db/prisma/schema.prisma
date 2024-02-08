@@ -61,9 +61,10 @@ model User {
   stripePriceId          String?   @map(name: "stripe_price_id")
   stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
 
-  accounts    Account[]
-  sessions    Session[]
-  resetTokens ResetPasswordToken[]
+  accounts           Account[]
+  sessions           Session[]
+  resetTokens        ResetPasswordToken[]
+  verificationTokens VerificationToken[]
 
   tasks Task[]
 
@@ -73,11 +74,16 @@ model User {
 }
 
 model VerificationToken {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
   identifier String
-  token      String   @unique
   expires    DateTime
 
-  @@unique([identifier, token])
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
   @@map(name: "verification_tokens")
 }
 

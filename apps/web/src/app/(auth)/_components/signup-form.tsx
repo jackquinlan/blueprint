@@ -20,7 +20,7 @@ import {
     Input,
     useZodForm,
 } from "@blueprint/ui";
-import { signupSchema } from "@blueprint/utils";
+import { signupSchema } from "@blueprint/lib/validators/user";
 
 import { Loader } from "@/components/loading-animation";
 import { api } from "@/trpc/react";

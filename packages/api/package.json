@@ -7,7 +7,7 @@
         "@blueprint/auth": "workspace:*",
         "@blueprint/db": "workspace:*",
         "@blueprint/emails": "workspace:*",
-        "@blueprint/utils": "workspace:*",
+        "@blueprint/lib": "workspace:*",
         "@trpc/client": "^10.40.0",
         "@trpc/server": "^10.40.0",
         "date-fns": "^2.30.0",

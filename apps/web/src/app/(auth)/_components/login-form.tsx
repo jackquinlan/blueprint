@@ -19,7 +19,7 @@ import {
     Input,
     useZodForm,
 } from "@blueprint/ui";
-import { loginSchema } from "@blueprint/utils";
+import { loginSchema } from "@blueprint/lib/validators/user";
 
 import { Loader } from "@/components/loading-animation";
 

@@ -1,1 +1,2 @@
-export { ResetPasswordEmail } from "./src/forgot-password-email";
+export { ResetPasswordEmail } from "./template/forgot-password-email";
+export { VerifyAccountEmail } from "./template/verify-email";

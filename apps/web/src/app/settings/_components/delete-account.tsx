@@ -4,8 +4,8 @@ import React, { useState, useTransition } from "react";
 
 import { AlertTriangle } from "lucide-react";
 import type { User } from "next-auth";
-import { toast } from "sonner";
 import { signOut } from "next-auth/react";
+import { toast } from "sonner";
 
 import {
     AlertDialog,
