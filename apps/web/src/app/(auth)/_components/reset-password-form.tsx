@@ -17,7 +17,7 @@ import {
     Input,
     useZodForm,
 } from "@blueprint/ui";
-import { resetPasswordSchmea } from "@blueprint/utils";
+import { resetPasswordSchmea } from "@blueprint/lib/validators/user";
 
 import { Loader } from "@/components/loading-animation";
 import { api } from "@/trpc/react";
@@ -31,7 +31,7 @@ export function ResetPasswordForm({ token }: { token: string }) {
         defaultValues: { password: "", confirmPassword: "", token: token },
     });
 
-    const updatePassword = api.user.updatePassword.useMutation({
+    const updatePassword = api.user.resetPassword.useMutation({
         onSuccess: () => {
             setSuccess(true);
             form.reset();

@@ -24,7 +24,8 @@ const features: FeatureProps[] = [
     },
     {
         title: "tRPC",
-        description: "Create end-to-end typesafe APIs that can be called from the server and client.",
+        description:
+            "Create end-to-end typesafe APIs that can be called from the server and client.",
     },
     {
         title: "Next Auth",
@@ -75,7 +76,9 @@ export default async function Home() {
             >
                 <Star className="h-4 w-4 fill-yellow-200 text-yellow-400" />
                 Star on Github
-                <Badge className="rounded-full" variant="success">{stars}</Badge>
+                <Badge className="rounded-full" variant="success">
+                    {stars}
+                </Badge>
             </Link>
             <Shell className="flex w-full flex-col items-center justify-center space-y-4 pb-8 xl:w-2/3">
                 <div className="w-full text-center">

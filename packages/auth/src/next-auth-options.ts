@@ -1,11 +1,11 @@
-import type { NextAuthOptions, Session } from "next-auth";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import type { NextAuthOptions, Session, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 
 import { db } from "@blueprint/db";
 
 import { verifyPassword } from "./crypto";
-import CustomAdapter from "./next-auth-adapter";
 
 const authOptions: NextAuthOptions = {
     callbacks: {
@@ -14,7 +14,7 @@ const authOptions: NextAuthOptions = {
             const updatedSession: Session = {
                 ...session,
                 user: {
-                    id: token.id, name: token.name, email: token.email, image: token.picture,
+                    id: token.id, name: token.name, email: token.email, image: token.picture, emailVerified: token.emailVerified,
                 },
             };
             return updatedSession;
@@ -29,13 +29,16 @@ const authOptions: NextAuthOptions = {
                 }
                 return token;
             }
-            // prettier-ignore
             return {
-                id: userFromPrisma.id, name: userFromPrisma.name, email: userFromPrisma.email, picture: userFromPrisma.image,
+                id: userFromPrisma.id, 
+                name: userFromPrisma.name,
+                emailVerified: userFromPrisma.emailVerified ? new Date(userFromPrisma.emailVerified).toISOString() : null, 
+                email: userFromPrisma.email, 
+                picture: userFromPrisma.image,
             }
         },
     },
-    adapter: CustomAdapter(db),
+    adapter: PrismaAdapter(db),
     providers: [
         GithubProvider({
             clientId: process.env.GITHUB_CLIENT_ID!,
@@ -64,7 +67,12 @@ const authOptions: NextAuthOptions = {
                 if (!(await verifyPassword(user.hashedPassword, password))) {
                     throw new Error("Invalid email or password.");
                 }
-                return user;
+                return {
+                    id: user.id,
+                    email: user.email,
+                    name: user.name,
+                    emailVerified: user.emailVerified?.toISOString() ?? null,
+                } satisfies User;
             },
         }),
         /**

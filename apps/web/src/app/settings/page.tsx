@@ -9,11 +9,14 @@ import {
     AlertTitle,
     Tabs,
     TabsContent,
+    Separator,
     TabsList,
     TabsTrigger,
 } from "@blueprint/ui";
-import { getUserPlan } from "@blueprint/utils";
+import { getUserPlan } from "@blueprint/lib/stripe/get-user-plan";
 
+import { api } from "@/trpc/server";
+import { AddOrUpdatePasswordModal } from "./_components/add-or-update-password-modal";
 import { BillingInfo } from "./_components/billing";
 import { DeleteAccount } from "./_components/delete-account";
 import { ProfileSettings } from "./_components/profile-settings";
@@ -29,6 +32,7 @@ export default async function Settings() {
         const stripePlan = await stripe.subscriptions.retrieve(subscription.stripeSubscriptionId);
         isCanceled = stripePlan.cancel_at_period_end;
     }
+    const data = await api.user.getUserSettingsInfo.query();
     return (
         <Tabs className="container" defaultValue="general">
             <TabsList>
@@ -38,12 +42,19 @@ export default async function Settings() {
             <TabsContent value="general" className="w-full space-y-4 md:w-2/3">
                 <h1 className="pt-4 text-3xl font-medium">Profile Settings</h1>
                 <ProfileSettings user={session.user} />
+                <div className="space-y-1">
+                    <h1 className="text-xl font-semibold">Security</h1>
+                    <Separator />
+                </div>
+                <AddOrUpdatePasswordModal hasPassword={data.hasPassword} />
                 <DeleteAccount user={session.user} />
             </TabsContent>
             <TabsContent value="billing">
                 <h1 className="py-4 text-3xl font-medium">Billing Settings</h1>
                 <Alert className="mb-2" variant="info">
-                    <AlertTitle className="font-semibold">Blueprint billing is in test-mode</AlertTitle>
+                    <AlertTitle className="font-semibold">
+                        Blueprint billing is in test-mode
+                    </AlertTitle>
                     <AlertDescription>
                         You will not be charged. Please use one of the Stripe test cards to test the
                         billing system.

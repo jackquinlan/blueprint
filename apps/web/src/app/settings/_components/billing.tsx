@@ -5,9 +5,9 @@ import React, { useState } from "react";
 import { Check } from "lucide-react";
 import { toast } from "sonner";
 
-import { Badge, Button, Separator } from "@blueprint/ui";
-import type { SubscriptionPlan, UserSubscriptionPlan } from "@blueprint/utils";
-import { FREE_PLAN, PREMIUM_PLAN } from "@blueprint/utils";
+import { Badge, Button, Separator }  from "@blueprint/ui";
+import type { UserSubscriptionPlan } from "@blueprint/lib/stripe/get-user-plan";
+import { FREE_PLAN, PREMIUM_PLAN, type SubscriptionPlan } from "@blueprint/lib/stripe/plans";
 
 import { Shell } from "@/components/shell";
 import { api } from "@/trpc/react";

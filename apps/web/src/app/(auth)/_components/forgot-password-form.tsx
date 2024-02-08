@@ -16,7 +16,7 @@ import {
     Input,
     useZodForm,
 } from "@blueprint/ui";
-import { forgotPasswordSchema } from "@blueprint/utils";
+import { forgotPasswordSchema } from "@blueprint/lib/validators/user";
 
 import { Loader } from "@/components/loading-animation";
 import { api } from "@/trpc/react";

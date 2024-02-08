@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { GeistSans } from "geist/font";
 import { Toaster } from "sonner";
 
+import { getServerAuthSession } from "@blueprint/auth";
 import "@/globals.css";
 
 import { Background } from "@/app/_components/background";
@@ -13,6 +14,7 @@ import { Nav } from "@/app/_components/nav";
 import { cn, constructMetadata } from "@/lib/utils";
 import { TRPCReactProvider } from "@/trpc/react";
 import { Providers } from "./providers";
+import { VerifyEmailBanner } from "@/components/verify-email-banner";
 
 const int = FontSans({ subsets: ["latin"], variable: "--inter" });
 
@@ -23,14 +25,22 @@ interface Props {
 
 export const dynamic = "force-dynamic";
 
-export default function RootLayout({ children }: Props) {
+export default async function RootLayout({ children }: Props) {
+    const session = await getServerAuthSession();
     return (
         <html lang="en">
             <head />
             <body className={cn(int.variable, GeistSans.className, GeistSans.variable)}>
                 <TRPCReactProvider headers={headers()}>
                     <Providers>
-                        <div className="flex min-h-screen flex-col">
+                        <div
+                            className={cn(
+                                session && 
+                                !session.user.emailVerified ? "flex flex-col h-[calc(100vh-40px)]" : "flex flex-col h-screen",
+                            )}
+                        >
+                            {session && 
+                            !session.user.emailVerified && <VerifyEmailBanner email={session.user.email} />}
                             <Nav />
                             <main className="flex-1">{children}</main>
                             <Footer />

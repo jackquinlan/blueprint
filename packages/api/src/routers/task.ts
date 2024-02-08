@@ -1,6 +1,7 @@
 import * as z from "zod";
 
-import { getUserPlan, RequiresPremiumError } from "@blueprint/utils";
+import { RequiresPremiumError } from "@blueprint/lib/errors";
+import { getUserPlan } from "@blueprint/lib/stripe/get-user-plan";
 
 import { createRouter, protectedProcedure } from "../trpc";
 

@@ -28,7 +28,9 @@ export default async function ResetPassword({
             <Shell className="w-full p-4 px-6 pb-4 md:w-1/2 xl:w-1/3">
                 <div className="py-2">
                     <h1 className="text-xl font-medium">Reset Password</h1>
-                    <h2 className="text-sm text-zinc-500">Enter a new password for your account</h2>
+                    <h2 className="text-sm text-zinc-500">
+                        Enter a new password for your account
+                    </h2>
                 </div>
                 <Separator />
                 {token.expiresAt < new Date() || token.used ? (

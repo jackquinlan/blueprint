@@ -3,9 +3,17 @@ import { addHours } from "date-fns";
 import { Resend } from "resend";
 import * as z from "zod";
 
-import { hashPassword } from "@blueprint/auth/src/crypto";
+import { hashPassword, verifyPassword } from "@blueprint/auth/src/crypto";
 import { ResetPasswordEmail } from "@blueprint/emails";
-import { forgotPasswordSchema, resetPasswordSchmea, signupSchema } from "@blueprint/utils";
+import { sendVerificationEmail } from "@blueprint/lib/auth/send-verification-email";
+import { 
+    addPasswordSchema,
+    forgotPasswordSchema, 
+    resetPasswordSchmea,
+    signupSchema,
+    updatePasswordSchema,
+    verifyEmailSchema,
+} from "@blueprint/lib/validators/user";
 
 import { createRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { stripe, url } from "./stripe/index";
@@ -65,11 +73,70 @@ export const userRouter = createRouter({
         return await resend.emails.send({
             from: "Jack <no-reply@jackquinlan.co>",
             to: [userExists.email],
-            subject: "Blueprint",
-            react: ResetPasswordEmail({ name: userExists.name ?? "User", resetLink: resetLink }),
+            subject: "Reset your password",
+            react: ResetPasswordEmail({ resetLink: resetLink }),
         });
     }),
-    updatePassword: publicProcedure.input(resetPasswordSchmea).mutation(async (opts) => {
+    sendVerificationEmail: publicProcedure.input(verifyEmailSchema).mutation(async (opts) => {
+        const userExists = await opts.ctx.db.user.findFirst({
+            where: {
+                email: opts.input.email,
+            },
+        });
+        if (!userExists) {
+            throw new Error("User does not exist.");
+        }
+        return await sendVerificationEmail(userExists);
+    }),
+    addPassword: protectedProcedure.input(addPasswordSchema).mutation(async (opts) => {
+        const user = await opts.ctx.db.user.findFirst({
+            where: {
+                id: opts.ctx.session.user.id,
+            },
+        });
+        if (!user) {
+            throw new Error("User does not exist.");
+        }
+        const hashedPassword = await hashPassword(opts.input.password);
+        await opts.ctx.db.user.update({
+            where: {
+                id: user.id,
+            },
+            data: {
+                hashedPassword: hashedPassword,
+            },
+        });
+    }),
+    updatePassword: protectedProcedure.input(updatePasswordSchema).mutation(async (opts) => {
+        const user = await opts.ctx.db.user.findFirst({
+            where: {
+                id: opts.ctx.session.user.id,
+            },
+        });
+        if (!user) {
+            throw new Error("User does not exist.");
+        }
+        if (!user.hashedPassword) {
+            throw new Error("User does not have a password.");
+        }
+        const passwordMatches = await verifyPassword(
+            user.hashedPassword,
+            opts.input.currentPassword,
+        );
+        if (!passwordMatches) {
+            throw new Error("Current password is incorrect.");
+        }
+        const newHashedPassword = await hashPassword(opts.input.password);
+        await opts.ctx.db.user.update({
+            where: {
+                id: user.id,
+            },
+            data: {
+                hashedPassword: newHashedPassword,
+            },
+        });
+    }),
+    resetPassword: publicProcedure.input(resetPasswordSchmea).mutation(async (opts) => {
         const token = await opts.ctx.db.resetPasswordToken.findFirst({
             where: {
                 id: opts.input.token,
@@ -132,5 +199,16 @@ export const userRouter = createRouter({
                     id: opts.input.id,
                 },
             });
+        }),
+        getUserSettingsInfo: protectedProcedure.query(async (opts) => {
+            const user = await opts.ctx.db.user.findFirstOrThrow({
+                where: {
+                    id: opts.ctx.session.user.id,
+                },
+            });
+            const hasPassword = user.hashedPassword ? true : false;
+            return {
+                hasPassword: hasPassword,
+            };
         }),
 });
