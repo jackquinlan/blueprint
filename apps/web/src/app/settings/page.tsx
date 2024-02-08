@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 
 import { stripe } from "@blueprint/api/src/routers/stripe";
 import { getServerAuthSession } from "@blueprint/auth";
+import { db } from "@blueprint/db";
 import {
     Alert,
     AlertDescription,
@@ -15,7 +16,6 @@ import {
 } from "@blueprint/ui";
 import { getUserPlan } from "@blueprint/lib/stripe/get-user-plan";
 
-import { api } from "@/trpc/server";
 import { AddOrUpdatePasswordModal } from "./_components/add-or-update-password-modal";
 import { BillingInfo } from "./_components/billing";
 import { DeleteAccount } from "./_components/delete-account";
@@ -32,7 +32,8 @@ export default async function Settings() {
         const stripePlan = await stripe.subscriptions.retrieve(subscription.stripeSubscriptionId);
         isCanceled = stripePlan.cancel_at_period_end;
     }
-    const data = await api.user.getUserSettingsInfo.query();
+    const user = await db.user.findFirst({ where: { id: session.user.id } });
+    const hasPassword = !!user?.hashedPassword;
     return (
         <Tabs className="container" defaultValue="general">
             <TabsList>
@@ -46,7 +47,7 @@ export default async function Settings() {
                     <h1 className="text-xl font-semibold">Security</h1>
                     <Separator />
                 </div>
-                <AddOrUpdatePasswordModal hasPassword={data.hasPassword} />
+                <AddOrUpdatePasswordModal hasPassword={hasPassword} />
                 <DeleteAccount user={session.user} />
             </TabsContent>
             <TabsContent value="billing">
