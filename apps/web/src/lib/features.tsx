@@ -67,7 +67,7 @@ export const features: FeatureProps[] = [
     },
     {
         title: "Next Auth",
-        description: "Add authentication flows, manage users, and secure application routes with middleware using Next Auth, an open-source authentication package.",
+        description: "Add authentication flows, manage users, and secure application routes with middleware using Next Auth.",
         link: "https://next-auth.js.org/",
         icons: (
             <ShieldCheck className="w-8 h-8 fill-primary" />
@@ -75,7 +75,7 @@ export const features: FeatureProps[] = [
     },
     {
         title: "Resend",
-        description: "The best package for sending emails to your users. Craft emails with ease using React Email.",
+        description: "The best package for sending emails to your users. Create email templates with ease using React Email.",
         link: "https://resend.com",
         icons: (
             <svg className="w-8 h-8 fill-primary" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
