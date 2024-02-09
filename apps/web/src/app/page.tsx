@@ -1,106 +1,104 @@
 import React from "react";
 import Link from "next/link";
 
-import { Star } from "lucide-react";
+import { ChevronRight, Shapes } from "lucide-react";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
-import { Badge, getButtonClasses } from "@blueprint/ui";
+import { getServerAuthSession } from "@blueprint/auth";
+import { getButtonClasses } from "@blueprint/ui";
 
-import { Shell } from "@/components/shell";
-import { cn, getGithubStars } from "@/lib/utils";
-
-interface FeatureProps {
-    title: string;
-    description: string;
-}
-
-const features: FeatureProps[] = [
-    {
-        title: "Next.js + React 18",
-        description: "Take advantage of React server components and the latest Next.js features.",
-    },
-    {
-        title: "Shadcn UI",
-        description: "Beautiful UI components built with RadixUI and Tailwind by shadcn.",
-    },
-    {
-        title: "tRPC",
-        description:
-            "Create end-to-end typesafe APIs that can be called from the server and client.",
-    },
-    {
-        title: "Next Auth",
-        description: "Login with Github and manage user authentication and middleware.",
-    },
-    {
-        title: "Prisma + PlanetScale",
-        description: "Typesafe database ORM for MySQL deployed on PlanetScale.",
-    },
-    {
-        title: "Stripe",
-        description: "Manage payments and subscriptions using Stripe.",
-    },
-    {
-        title: "Resend",
-        description: "Build email templates with React Email and send them with Resend.",
-    },
-    {
-        title: "More coming soon...",
-        description: "I am always looking for more features to implement.",
-    },
-];
+import { cn } from "@/lib/utils";
+import { type FeatureProps, features } from "@/lib/features";
 
 export default async function Home() {
-    const stars = await getGithubStars();
+    const session = await getServerAuthSession();
     return (
-        <div className="container flex flex-col items-center justify-center space-y-8">
-            <div className="mt-24 space-y-4 text-center lg:w-2/3">
-                <h1 className="text-5xl font-bold">
-                    Your Application{" "}
-                    <span className="bg-gradient-to-r from-sky-400 to-cyan-300 bg-clip-text text-transparent">
+        <div className="container flex flex-col w-full space-y-24">
+            <div className="mt-24 space-y-4">
+                <h1 className="text-8xl">
+                    Your Next Application{" "}
+                    <span className="font-medium bg-gradient-to-r from-sky-400 to-cyan-300 bg-clip-text text-transparent">
                         Blueprint
                     </span>
                 </h1>
-                <p className="text-lg text-zinc-500">
-                    Blueprint is a Next.js starter kit built to help you get your project off the
-                    ground faster so you can focus less on the tedious setup and more on building
+                <p className="text-2xl text-primary/80">
+                    Blueprint is an open-source starter kit built to help you get your project off the ground faster so you can focus less on the tedious setup and more on building
                     incredible experiences for your users.
                 </p>
+                <div className="flex items-center gap-2">
+                    <Link
+                        href={session ? "/tasks": "/signup"}
+                        className={cn(
+                            getButtonClasses({ variant: "primary", size: "lg" }),
+                            "flex w-fit items-center gap-1 rounded-full",
+                        )}
+                    >
+                        {session ? "Your Tasks" : "Get Started"}
+                    </Link>
+                    <Link
+                        href="https://github.com/jackquinlan/blueprint"
+                        target="_blank"
+                        className={cn(
+                            getButtonClasses({ variant: "outline", size: "lg" }),
+                            "flex w-fit items-center gap-2 rounded-full",
+                        )}
+                    >
+                        <GitHubLogoIcon className="h-4 w-4" />
+                        Star on Github
+                    </Link>
+                </div>
             </div>
-            <Link
-                href="https://github.com/jackquinlan/blueprint"
-                target="_blank"
-                className={cn(
-                    getButtonClasses({ variant: "primary" }),
-                    "flex w-fit items-center gap-1",
-                )}
-            >
-                <Star className="h-4 w-4 fill-yellow-200 text-yellow-400" />
-                Star on Github
-                <Badge className="rounded-full" variant="success">
-                    {stars}
-                </Badge>
-            </Link>
-            <Shell className="flex w-full flex-col items-center justify-center space-y-4 pb-8 xl:w-2/3">
-                <div className="w-full text-center">
-                    <h1 className="text-3xl font-bold">Features</h1>
+            <div className="space-y-4 pb-12">
+                <div className="flex flex-col">
+                    <h1 className="text-3xl">Built using a modern tech stack.</h1>
+                    <h2 className="text-2xl text-primary/80">
+                        Blueprint includes the features you need without being feature bloated.
+                    </h2>
                 </div>
-                <div className="flex w-full justify-center">
-                    <div className="container grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-                        {features.map((feature) => (
-                            <Feature key={feature.title} {...feature} />
-                        ))}
-                    </div>
-                </div>
-            </Shell>
+                <Features />
+                <FeatureCard 
+                    title="Have a feature suggestion?"
+                    description="We're always looking to improve Blueprint. If you have a feature suggestion, we'd love to hear it! Also, if you ever run into any problems with Blueprint, just open an issue on GitHub and we will get right to fixing it."
+                    link="https://github.com/jackquinlan/blueprint"
+                    icons={<Shapes className="w-7 h-7" />}
+                />
+            </div>
         </div>
     );
 }
 
-function Feature({ title, description }: FeatureProps) {
+function Features() {
     return (
-        <div className="flex flex-col space-y-2">
-            <h1 className="text-xl font-medium">{title}</h1>
-            <h4 className="text-sm text-zinc-500">{description}</h4>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {features.map((feat, i) => (
+                <FeatureCard key={i} {...feat} />
+            ))}
+        </div>
+    );
+}
+
+function FeatureCard({ title, description, link, icons }: FeatureProps) {
+    return (
+        <div className="flex flex-col justify-between space-y-4 border border-border bg-zinc-50 dark:bg-card rounded-lg text-primary">
+            <div className="flex flex-col gap-y-4 text-xl p-4">
+                <h1 className="flex items-center gap-2 text-2xl font-medium">
+                    {icons}
+                    {title && title}
+                </h1>
+                {description}
+            </div>
+            <div className="bg-background rounded-b-lg border-t border-t-border px-4 py-2">
+                <Link 
+                    href={link} 
+                    className={cn(
+                        getButtonClasses({ variant: "outline", size: "lg" }),
+                        "w-fit rounded-full bg-background gap-2",
+                    )}
+                    target="_blank"
+                > 
+                    Learn more <ChevronRight className="stroke-1 h-4 w-4" />
+                </Link>
+            </div>
         </div>
     );
 }

@@ -90,7 +90,7 @@
      * Update default highlight color
      */
     ::selection {
-        background-color: black;
+        background-color: #3b82f6;
         color: white;
     }
 }
