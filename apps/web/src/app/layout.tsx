@@ -11,7 +11,7 @@ import "@/globals.css";
 import { Background } from "@/app/_components/background";
 import { Footer } from "@/app/_components/footer";
 import { Nav } from "@/app/_components/nav";
-import { cn, constructMetadata } from "@/lib/utils";
+import { cn, constructMetadata, getGithubStars } from "@/lib/utils";
 import { TRPCReactProvider } from "@/trpc/react";
 import { Providers } from "./providers";
 import { VerifyEmailBanner } from "@/components/verify-email-banner";
@@ -27,6 +27,7 @@ export const dynamic = "force-dynamic";
 
 export default async function RootLayout({ children }: Props) {
     const session = await getServerAuthSession();
+    const githubStars = await getGithubStars();
     return (
         <html lang="en">
             <head />
@@ -41,7 +42,7 @@ export default async function RootLayout({ children }: Props) {
                         >
                             {session && 
                             !session.user.emailVerified && <VerifyEmailBanner email={session.user.email} />}
-                            <Nav />
+                            <Nav stars={githubStars} />
                             <main className="flex-1">{children}</main>
                             <Footer />
                         </div>

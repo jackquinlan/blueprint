@@ -34,5 +34,5 @@ export async function getGithubStars() {
     const githubResponse = await fetch("https://api.github.com/repos/jackquinlan/blueprint");
     const json = await githubResponse.json();
     const githubStars = z.object({ stargazers_count: z.number() }).safeParse(json);
-    return githubStars.success ? githubStars.data.stargazers_count : "100+";
+    return githubStars.success ? githubStars.data.stargazers_count : 0;
 }

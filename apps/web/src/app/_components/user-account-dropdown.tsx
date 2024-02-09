@@ -26,7 +26,7 @@ export function UserAccountDropdown({ user }: Props) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger className="outline-none">
-                <Avatar className="h-8 w-8">
+                <Avatar className="h-9 w-9 border border-border">
                     <AvatarImage src={user.image ?? undefined} alt="user" />
                     <AvatarFallback className="bg-gradient-to-r from-sky-400 to-cyan-300 text-white">
                         {user.name?.charAt(0).toUpperCase()}
