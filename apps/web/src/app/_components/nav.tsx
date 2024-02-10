@@ -56,7 +56,7 @@ export async function Nav({ stars = 0 }: { stars?: number }) {
                             href="/login"
                             className={cn(
                                 "flex items-center gap-1",
-                                getButtonClasses({ variant: "outline", size: "sm" }),
+                                getButtonClasses({ variant: "outline" }),
                             )}
                         >
                             Log In <LogIn className="h-4 w-4" />

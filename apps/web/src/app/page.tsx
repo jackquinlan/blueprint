@@ -13,19 +13,19 @@ import { type FeatureProps, features } from "@/lib/features";
 export default async function Home() {
     const session = await getServerAuthSession();
     return (
-        <div className="container flex flex-col w-full space-y-24">
-            <div className="mt-24 space-y-4">
-                <h1 className="text-8xl">
-                    Your Next Application{" "}
+        <div className="flex flex-col w-full space-y-24 px-4 sm:container">
+            <div className="mt-24 space-y-4 text-center sm:text-left">
+                <h1 className="text-6xl md:text-7xl">
+                    Your Next Application<br />
                     <span className="font-medium bg-gradient-to-r from-sky-400 to-cyan-300 bg-clip-text text-transparent">
                         Blueprint
                     </span>
                 </h1>
-                <p className="text-2xl text-primary/80">
+                <p className="text-lg text-primary/80 sm:text-xl">
                     Blueprint is an open-source starter kit built to help you get your project off the ground faster so you can focus less on the tedious setup and more on building
                     incredible experiences for your users.
                 </p>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 justify-center ">
                     <Link
                         href={session ? "/tasks": "/signup"}
                         className={cn(
@@ -58,7 +58,7 @@ export default async function Home() {
                 <Features />
                 <FeatureCard 
                     title="Have a feature suggestion?"
-                    description="We're always looking to improve Blueprint. If you have a feature suggestion, we'd love to hear it! Also, if you ever run into any problems with Blueprint, just open an issue on GitHub and we will get right to fixing it."
+                    description="We're always looking to improve Blueprint. If you have a feature suggestion, we'd love to hear it!"
                     link="https://github.com/jackquinlan/blueprint"
                     icons={<Shapes className="w-7 h-7" />}
                 />
