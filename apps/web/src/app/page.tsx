@@ -25,7 +25,7 @@ export default async function Home() {
                     Blueprint is an open-source starter kit built to help you get your project off the ground faster so you can focus less on the tedious setup and more on building
                     incredible experiences for your users.
                 </p>
-                <div className="flex items-center gap-2 justify-center ">
+                <div className="flex items-center gap-2 justify-center sm:justify-start">
                     <Link
                         href={session ? "/tasks": "/signup"}
                         className={cn(
